@@ -1,0 +1,56 @@
+.form {
+  $form: &;
+
+  position: relative;
+  display: flex;
+  flex-flow: column wrap;
+  width: 480px;
+  height: auto;
+  padding: 40px;
+  background-color: $body-bg;
+  border: none;
+  border-radius: 3px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+  fieldset {
+    padding: 0;
+    margin: 0;
+    border: none;
+  }
+
+  legend {
+    display: table;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 35px;
+    font-size: 24px;
+    line-height: 1;
+  }
+
+  &__list {
+    display: none;
+  }
+
+  input[type='submit'] {
+    margin-top: 35px;
+    border: none;
+  }
+
+  .icon {
+    position: absolute;
+    top: 40px;
+    right: 45px;
+    margin-left: auto;
+    cursor: pointer;
+    transition: all 0.5s;
+
+    &:hover {
+      --fill: #{$primary};
+    }
+  }
+
+  .button {
+    @include margin-x(auto);
+  }
+}

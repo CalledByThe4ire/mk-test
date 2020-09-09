@@ -31,4 +31,8 @@
     cursor: not-allowed;
     background-color: #82b3d9;
   }
+
+  &--invisible {
+    display: none;
+  }
 }

@@ -1,13 +1,15 @@
 extends _template.pug
 include ../components/page/page.pug
 include ../components/button/button.pug
+include ../components/form/form.pug
 
 block content
 	+page
 		| %=symbols=%
 
 		//- pug mixins go here
-		+button('Регистрация')
+		+button('Регистрация')(type='button')
+		+form
 
 //- add scripts if necessary
 //- block prepend scripts

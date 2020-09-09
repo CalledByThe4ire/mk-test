@@ -1,0 +1,41 @@
+include ../info/info.pug
+include ../button/button.pug
+include ../icon/icon.pug
+
+mixin form(data)
+	+b('form').form&attributes(attributes)
+		+icon('close', 19, 19)
+		fieldset
+			legend Регистрация
+
+			+e('div').field.form-field__.--email
+				label(for='email') E-mail
+				input(type='email', name='email', id='email')
+				+e('p').message--invisible Поле обязательно для заполнения
+
+			+e('div').field.form-field__.--nickname
+				label(for='nickname') Никнейм
+				input(type='text', name='nickname', id='nickname', placeholder='frontendDeveloper')
+
+				- const nicknameData = {title: 'Никнейм может содержать только:', items: [{modifier:"hasRequiredSymbolsCount",text:"от 3 до 40 символов"},{modifier:"hasDigits",text:"цифры"},{modifier:"hasLatinCharsOnly",text:"только латинские символы"},{modifier:"hasUndescore",text:"символ подчеркивания"},{modifier:"startsWithALetter",text:"Никнейм может начинаться только с буквы"}]};
+
+				+info(nicknameData)(class='__info--invisible')
+
+			+e('div').field.form-field__.--password
+				label(for='password') Пароль
+				input(type='password', name='password', id='password')
+
+				- const passwordData = {title: 'Пароль должен содержать:', items: [{modifier:"hasRequiredSymbolsCount",text:"от 6 до 32 символов"},{modifier:"hasDigit",text:"цифру"},{modifier:"hasLowerAndUpperCase",text:"заглавную и строчную буквы"},{modifier:"isUnique",text:"Пароль не должен совпадать с Никнеймом"}]};
+
+				+info(passwordData)(class='__info--invisible')
+
+			+e('div').field.form-field__.--password-confirmation
+				label(for='passwordConfirmation') Пароль ещё раз
+				input(type='password', name='passwordConfirmation', id='passwordConfirmation')
+				+e('p').message--invisible Введённые пароли не совпадают
+
+			+e('div').field.form-field__.--user-agreement
+				input(type='checkbox', name='userAgreement', id='userAgreement')
+				label(for='userAgreement') Я принимаю условия <a href='#'>Пользовательского соглашения</a>
+
+			+button('Зарегистрироваться')(disabled=true, type='submit')

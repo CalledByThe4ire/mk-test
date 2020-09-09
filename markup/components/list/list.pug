@@ -1,0 +1,5 @@
+mixin list(data)
+	+b('ul').list&attributes(attributes)
+		each item in data
+			- const { modifier, text } = item;
+			+e.item(class=`--${modifier}`)= text
