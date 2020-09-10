@@ -1,4 +1,4 @@
-include ../info/info.pug
+include ../validation-rules/validation-rules.pug
 include ../button/button.pug
 include ../icon/icon.pug
 
@@ -11,15 +11,15 @@ mixin form(data)
 			+e('div').field.form-field__.--email
 				label(for='email') E-mail
 				input(type='email', name='email', id='email')
-				+e('p').message Поле обязательно для заполнения
+				+e('p').feedback
 
 			+e('div').field.form-field__.--nickname
 				label(for='nickname') Никнейм
 				input(type='text', name='nickname', id='nickname', placeholder='frontendDeveloper')
 
-				- const nicknameData = {title: 'Никнейм может содержать только:', items: [{modifier:"hasRequiredSymbolsCount",text:"от 3 до 40 символов"},{modifier:"hasDigits",text:"цифры"},{modifier:"hasLatinCharsOnly",text:"только латинские символы"},{modifier:"hasUndescore",text:"символ подчеркивания"},{modifier:"startsWithALetter",text:"Никнейм может начинаться только с буквы"}]};
+				- const nicknameData = {title: 'Никнейм должен содержать:', items: [{modifier:"hasRequiredSymbolsCount",text:"от 3 до 40 символов"},{modifier:"hasValidSymbols",text:"латинские буквы, или цифры, или символ подчеркивания"},{modifier:"startsWithALetter",text:"Никнейм может начинаться только с буквы"}]};
 
-				+info(nicknameData)(class='__info--invisible')
+				+validation-rules(nicknameData)(class='__validation-rules--invisible')
 
 			+e('div').field.form-field__.--password
 				label(for='password') Пароль
@@ -27,12 +27,12 @@ mixin form(data)
 
 				- const passwordData = {title: 'Пароль должен содержать:', items: [{modifier:"hasRequiredSymbolsCount",text:"от 6 до 32 символов"},{modifier:"hasDigit",text:"цифру"},{modifier:"hasLowerAndUpperCase",text:"заглавную и строчную буквы"},{modifier:"isUnique",text:"Пароль не должен совпадать с Никнеймом"}]};
 
-				+info(passwordData)(class='__info--invisible')
+				+validation-rules(passwordData)(class='__validation-rules--invisible')
 
 			+e('div').field.form-field__.--password-confirmation
 				label(for='passwordConfirmation') Пароль ещё раз
 				input(type='password', name='passwordConfirmation', id='passwordConfirmation')
-				+e('p').message Введённые пароли не совпадают
+				+e('p').feedback
 
 			+e('div').field.form-field__.--user-agreement
 				input(type='checkbox', name='userAgreement', id='userAgreement')

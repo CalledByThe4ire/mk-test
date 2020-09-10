@@ -38,6 +38,11 @@
     }
   }
 
+  &--email,
+  &--password-confirmation {
+    margin-bottom: 9px;
+  }
+
   &--user-agreement {
     margin-top: 20px;
     margin-bottom: 15px;
@@ -111,13 +116,9 @@
     input {
       border-color: $danger;
     }
-
-    #{$form-field}__message {
-      display: flex;
-    }
   }
 
-  &__info {
+  &__validation-rules {
     display: flex;
     flex-flow: column wrap;
 
@@ -126,9 +127,11 @@
     }
   }
 
-  &__message {
-    display: none;
+  &__feedback {
+    display: flex;
     flex-flow: row wrap;
+    width: 100%;
+    min-height: 14px;
     padding: 0;
     margin: 0;
     font-size: 12px;
@@ -137,7 +140,7 @@
   }
 
   &--active {
-    & #{$form-field}__info {
+    & #{$form-field}__validation-rules {
       display: flex;
     }
   }
