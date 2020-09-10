@@ -11,7 +11,7 @@ mixin form(data)
 			+e('div').field.form-field__.--email
 				label(for='email') E-mail
 				input(type='email', name='email', id='email')
-				+e('p').message--invisible Поле обязательно для заполнения
+				+e('p').message Поле обязательно для заполнения
 
 			+e('div').field.form-field__.--nickname
 				label(for='nickname') Никнейм
@@ -32,7 +32,7 @@ mixin form(data)
 			+e('div').field.form-field__.--password-confirmation
 				label(for='passwordConfirmation') Пароль ещё раз
 				input(type='password', name='passwordConfirmation', id='passwordConfirmation')
-				+e('p').message--invisible Введённые пароли не совпадают
+				+e('p').message Введённые пароли не совпадают
 
 			+e('div').field.form-field__.--user-agreement
 				input(type='checkbox', name='userAgreement', id='userAgreement')
