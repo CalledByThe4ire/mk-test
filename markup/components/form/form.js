@@ -16,6 +16,41 @@ document.addEventListener(`DOMContentLoaded`, () => {
         return /\S+@\S+\.\S+/.test(value.toLowerCase());
       }
     },
+    nickname: {
+      isNotEmpty(value) {
+        return value.length !== 0;
+      },
+      hasRequiredSymbolsCount(value) {
+        return value.length >= 3 && value.length <= 40;
+      },
+      hasValidSymbols(value) {
+        return /\w/.test(value);
+      },
+      startsWithALetter(value) {
+        if (value) {
+          return /^[a-zA-Z]/.test(value[0]);
+        }
+
+        return false;
+      }
+    },
+    password: {
+      isNotEmpty(value) {
+        return value.length !== 0;
+      },
+      hasRequiredSymbolsCount(value) {
+        return value.length >= 6 && value.length <= 32;
+      },
+      hasDigit(value) {
+        return /\d/.test(value);
+      },
+      hasLowerAndUpperCase(value) {
+        return /([A-Z].*[a-z]|[a-z].*[A-Z])/.test(value);
+      },
+      isUnique(value) {
+        return formElements.nickname.value !== value;
+      }
+    },
     passwordConfirmation: {
       isNotEmpty(value) {
         return value.length !== 0;
@@ -30,6 +65,14 @@ document.addEventListener(`DOMContentLoaded`, () => {
 
   const isFieldValid = (fieldName, fieldValue) =>
     Object.keys(validationMapping[fieldName]).every((key) => validationMapping[fieldName][key](fieldValue));
+
+  const getInvalidCheckNames = (fieldName, fieldValue) => {
+    return Object.keys(validationMapping[fieldName]).reduce((acc, key) => {
+      const newAcc = validationMapping[fieldName][key](fieldValue) ? acc : [...acc, key];
+
+      return newAcc;
+    }, []);
+  };
 
   [formElements.email, formElements.passwordConfirmation].forEach((element) =>
     element.addEventListener('blur', ({ target }) => {
@@ -77,6 +120,34 @@ document.addEventListener(`DOMContentLoaded`, () => {
 
       formFieldElement.classList.remove('form-field--invalid');
       feedbackElement.textContent = '';
+    })
+  );
+
+  [formElements.nickname, formElements.password].forEach((element) =>
+    element.addEventListener('focus', ({ target }) => {
+      const formFieldElement = target.parentElement;
+
+      const validationRulesContainer = formFieldElement.lastElementChild;
+
+      validationRulesContainer.classList.remove('form-field__validation-rules--invisible');
+    })
+  );
+
+  [formElements.nickname, formElements.password].forEach((element) =>
+    element.addEventListener('blur', ({ target }) => {
+      const formFieldElement = target.parentElement;
+
+      const validationRulesContainer = formFieldElement.lastElementChild;
+
+      if (!validationMapping[target.name].isNotEmpty(target.value)) {
+        validationRulesContainer.classList.add('form-field__validation-rules--invisible');
+      }
+    })
+  );
+
+  [formElements.nickname, formElements.password].forEach((element) =>
+    element.addEventListener('input', () => {
+      //
     })
   );
 });
