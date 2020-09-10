@@ -35,7 +35,7 @@
       content: '';
     }
 
-    &--success {
+    &--valid {
       &::after {
         width: 10px;
         height: 9px;
@@ -44,7 +44,7 @@
       }
     }
 
-    &--failure {
+    &--invalid {
       &::after {
         width: 10px;
         height: 10px;

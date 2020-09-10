@@ -165,8 +165,28 @@ document.addEventListener(`DOMContentLoaded`, () => {
   );
 
   [formFields.nickname, formFields.password].forEach((element) =>
-    element.addEventListener('input', ({ target: { name, value } }) => {
-      sortFieldRequirementsByValidity(name, value);
+    element.addEventListener('input', ({ target }) => {
+      const { name, value } = target;
+
+      const requirementsMapping = sortFieldRequirementsByValidity(name, value);
+
+      const validationRulesListItems = target.parentElement.lastElementChild.querySelectorAll('.list__item');
+
+      validationRulesListItems.forEach((val) => {
+        const item = val;
+
+        const clsList = Array.from(item.classList).map((className) => {
+          const [el, modifier] = className.split('--');
+
+          if (requirementsMapping.fieldValidRequirements.includes(modifier)) {
+            return `${el}--valid`;
+          }
+
+          return className;
+        });
+
+        item.className = clsList.join(' ');
+      });
     })
   );
 });
