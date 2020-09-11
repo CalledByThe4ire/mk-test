@@ -1,4 +1,6 @@
 .button {
+  $button: &;
+
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
@@ -14,7 +16,6 @@
   border: none;
   border-radius: 3px;
   outline: none;
-  transition: all 0.5s;
 
   @include padding-y(13px);
   @include padding-x(30px);
@@ -30,6 +31,10 @@
   &:disabled {
     cursor: not-allowed;
     background-color: #82b3d9;
+
+    &#{$button}--success {
+      background-color: $success;
+    }
   }
 
   &--invisible {

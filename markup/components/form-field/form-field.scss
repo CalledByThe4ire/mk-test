@@ -4,7 +4,7 @@
   display: flex;
   flex-flow: row wrap;
   width: 100%;
-  margin-bottom: 25px;
+  margin-bottom: 9px;
 
   label {
     margin-bottom: 10px;
@@ -20,8 +20,6 @@
     font-size: 14px;
     line-height: 16px;
     border: 1px solid $info;
-    transition-duration: 0.5s;
-    transition-property: border-color;
 
     &::placeholder {
       color: $body-color;
@@ -36,11 +34,6 @@
     &:invalid {
       border-color: $danger;
     }
-  }
-
-  &--email,
-  &--password-confirmation {
-    margin-bottom: 9px;
   }
 
   &--user-agreement {
@@ -87,6 +80,10 @@
         &:hover {
           text-decoration: underline;
         }
+
+        &:focus {
+          outline: none;
+        }
       }
 
       &:hover {
@@ -115,6 +112,13 @@
     /* stylelint-disable-next-line no-descending-specificity */
     input {
       border-color: $danger;
+    }
+  }
+
+  &--valid {
+    /* stylelint-disable-next-line no-descending-specificity */
+    input {
+      border-color: $success;
     }
   }
 

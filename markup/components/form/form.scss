@@ -28,6 +28,10 @@
     line-height: 1;
   }
 
+  &--invisible {
+    display: none;
+  }
+
   &__list {
     display: none;
   }
@@ -43,7 +47,6 @@
     right: 45px;
     margin-left: auto;
     cursor: pointer;
-    transition: all 0.5s;
 
     &:hover {
       --fill: #{$primary};
