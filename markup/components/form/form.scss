@@ -28,6 +28,10 @@
     line-height: 1;
   }
 
+  &--invisible {
+    display: none;
+  }
+
   &__list {
     display: none;
   }

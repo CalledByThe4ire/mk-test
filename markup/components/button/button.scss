@@ -1,4 +1,6 @@
 .button {
+  $button: &;
+
   display: flex;
   flex-flow: row nowrap;
   justify-content: center;
@@ -30,6 +32,10 @@
   &:disabled {
     cursor: not-allowed;
     background-color: #82b3d9;
+
+    &#{$button}--success {
+      background-color: $success;
+    }
   }
 
   &--invisible {

@@ -5,16 +5,13 @@
 
   &__item {
     position: relative;
+    padding-left: 20px;
+    margin-bottom: 5px;
     font-size: 12px;
     line-height: 14px;
     color: $info;
 
-    &:not(:last-child) {
-      padding-left: 20px;
-      margin-bottom: 5px;
-    }
-
-    &:not(:last-child)::before {
+    &::before {
       position: absolute;
       top: 50%;
       left: 0;
@@ -27,7 +24,7 @@
       transform: translateY(-50%);
     }
 
-    &:not(:last-child)::after {
+    &::after {
       position: absolute;
       top: 50%;
       left: 0;

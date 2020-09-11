@@ -3,8 +3,9 @@ include ../button/button.pug
 include ../icon/icon.pug
 
 mixin form(data)
-	+b('form').form&attributes(attributes)
-		+icon('close', 19, 19)
+	+b('form').form--invisible&attributes(attributes)
+		+e('button').button--close(type='button')
+			+icon('close', 19, 19)
 		fieldset
 			legend Регистрация
 
@@ -17,17 +18,19 @@ mixin form(data)
 				label(for='nickname') Никнейм
 				input(type='text', name='nickname', id='nickname', placeholder='frontendDeveloper')
 
-				- const nicknameData = {title: 'Никнейм должен содержать:', items: [{modifier:"hasRequiredSymbolsCount",text:"от 3 до 40 символов"},{modifier:"hasValidSymbols",text:"латинские буквы, или цифры, или символ подчеркивания"},{modifier:"startsWithALetter",text:"Никнейм может начинаться только с буквы"}]};
+				- const nicknameData = {title: 'Никнейм должен содержать:', items: [{modifier:"hasRequiredSymbolsCount",text:"от 3 до 40 символов"},{modifier:"hasValidSymbols",text:"латинские буквы, или цифры, или символ подчеркивания"}]};
 
 				+validation-rules(nicknameData)(class='__validation-rules--invisible')
+				+e('p').feedback
 
 			+e('div').field.form-field__.--password
 				label(for='password') Пароль
 				input(type='password', name='password', id='password')
 
-				- const passwordData = {title: 'Пароль должен содержать:', items: [{modifier:"hasRequiredSymbolsCount",text:"от 6 до 32 символов"},{modifier:"hasDigit",text:"цифру"},{modifier:"hasLowerAndUpperCase",text:"заглавную и строчную буквы"},{modifier:"isUnique",text:"Пароль не должен совпадать с Никнеймом"}]};
+				- const passwordData = {title: 'Пароль должен содержать:', items: [{modifier:"hasRequiredSymbolsCount",text:"от 6 до 32 символов"},{modifier:"hasDigit",text:"цифру"},{modifier:"hasLowerAndUpperCase",text:"заглавную и строчную буквы"}]};
 
 				+validation-rules(passwordData)(class='__validation-rules--invisible')
+				+e('p').feedback
 
 			+e('div').field.form-field__.--password-confirmation
 				label(for='passwordConfirmation') Пароль ещё раз
@@ -38,4 +41,4 @@ mixin form(data)
 				input(type='checkbox', name='userAgreement', id='userAgreement')
 				label(for='userAgreement') Я принимаю условия <a href='#'>Пользовательского соглашения</a>
 
-			+button('Зарегистрироваться')(disabled=true, type='submit')
+			+button('Зарегистрироваться')(disabled=true, type='submit', class='--submit')
