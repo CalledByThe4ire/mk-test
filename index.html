@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html class="no-js" lang="ru">
+
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="x-ua-compatible" content="ie=edge" />
+        <title>MK test</title>
+        <meta content="" name="description" />
+        <meta content="" name="keywords" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta content="telephone=no" name="format-detection" />
+        <meta name="HandheldFriendly" content="true" />
+
+        <!--[if (gt IE 9)|!(IE)]><!-->
+        <link href="static/css/main.min.css" rel="stylesheet" type="text/css">
+        <!--<![endif]-->
+        <meta property="og:title" content="#{data.title}" />
+        <meta property="og:title" content="" />
+        <meta property="og:url" content="" />
+        <meta property="og:description" content="" />
+        <meta property="og:image" content="" />
+        <meta property="og:image:type" content="image/jpeg" />
+        <meta property="og:image:width" content="500" />
+        <meta property="og:image:height" content="300" />
+        <meta property="twitter:description" content="" />
+        <link rel="image_src" href="" />
+        <link rel="icon" type="image/x-icon" href="favicon.ico" />
+        <script>
+            (function(H){H.className=H.className.replace(/\bno-js\b/,'js')})(document.documentElement)
+        </script>
+    </head>
+
+    <body class="page">
+        <svg xmlns="http://www.w3.org/2000/svg" style="border: 0 !important; clip: rect(0 0 0 0) !important; height: 1px !important; margin: -1px !important; overflow: hidden !important; padding: 0 !important; position: absolute !important; width: 1px !important;"
+        class="root-svg-symbols-element">
+            <symbol id="close" viewBox="0 0 19 19">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M18.385 16.264a1 1 0 010 1.414l-.707.707a1 1 0 01-1.415 0l-6.717-6.718-6.718 6.718a1 1 0 01-1.414 0l-.707-.707a1 1 0 010-1.415l6.718-6.717L.707 2.828a1 1 0 010-1.414l.707-.707a1 1 0 011.414 0l6.718 6.718L16.263.707a1 1 0 011.415 0l.707.707a1 1 0 010 1.414l-6.718 6.718 6.718 6.718z"
+                fill="var(--fill, #c4c4c4)" />
+            </symbol>
+        </svg>
+        <input class="button button--registration" value="Регистрация" type="button" />
+        <form class="form form--invisible">
+            <button class="form__button form__button--close" type="button">
+                <svg class="icon icon--close" width="19" height="19">
+                    <use xlink:href="#close"></use>
+                </svg>
+
+            </button>
+            <fieldset>
+                <legend>Регистрация</legend>
+                <div class="form__field form-field form-field--email">
+                    <label for="email">E-mail</label>
+                    <input type="email" name="email" id="email" />
+                    <p class="form-field__feedback">
+                    </p>
+                </div>
+                <div class="form__field form-field form-field--nickname">
+                    <label for="nickname">Никнейм</label>
+                    <input type="text" name="nickname" id="nickname" placeholder="frontendDeveloper" />
+                    <div class="validation-rules form-field__validation-rules form-field__validation-rules--invisible">
+                        <h2 class="validation-rules__title">Никнейм должен содержать:
+            </h2>
+                        <ul class="list validation-rules__list">
+                            <li class="list__item list__item--hasRequiredSymbolsCount">от 3 до 40 символов
+                            </li>
+                            <li class="list__item list__item--hasValidSymbols">латинские буквы, или цифры, или символ подчеркивания
+                            </li>
+                        </ul>
+                    </div>
+                    <p class="form-field__feedback">
+                    </p>
+                </div>
+                <div class="form__field form-field form-field--password">
+                    <label for="password">Пароль</label>
+                    <input type="password" name="password" id="password" />
+                    <div class="validation-rules form-field__validation-rules form-field__validation-rules--invisible">
+                        <h2 class="validation-rules__title">Пароль должен содержать:
+            </h2>
+                        <ul class="list validation-rules__list">
+                            <li class="list__item list__item--hasRequiredSymbolsCount">от 6 до 32 символов
+                            </li>
+                            <li class="list__item list__item--hasDigit">цифру
+                            </li>
+                            <li class="list__item list__item--hasLowerAndUpperCase">заглавную и строчную буквы
+                            </li>
+                        </ul>
+                    </div>
+                    <p class="form-field__feedback">
+                    </p>
+                </div>
+                <div class="form__field form-field form-field--password-confirmation">
+                    <label for="passwordConfirmation">Пароль ещё раз</label>
+                    <input type="password" name="passwordConfirmation" id="passwordConfirmation" />
+                    <p class="form-field__feedback">
+                    </p>
+                </div>
+                <div class="form__field form-field form-field--user-agreement">
+                    <input type="checkbox" name="userAgreement" id="userAgreement" />
+                    <label for="userAgreement">Я принимаю условия <a href='#'>Пользовательского соглашения</a>
+                    </label>
+                </div>
+                <input class="button button--submit" value="Зарегистрироваться" disabled="disabled" type="submit" />
+            </fieldset>
+        </form>
+    </body>
+    <script src="static/js/main.min.js"></script>
+
+</html>
