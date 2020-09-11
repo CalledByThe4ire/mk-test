@@ -120,7 +120,11 @@ document.addEventListener(`DOMContentLoaded`, () => {
   let isChecked = false;
 
   close.addEventListener('click', ({ target }) => {
-    target.closest('form').classList.add('form--invisible');
+    const f = target.closest('.form');
+
+    f.classList.add('form--invisible');
+
+    f.reset();
     document.querySelector('.button--registration').classList.remove('button--invisible');
   });
 
