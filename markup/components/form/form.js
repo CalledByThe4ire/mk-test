@@ -165,9 +165,13 @@ document.addEventListener(`DOMContentLoaded`, () => {
 
       switch (target.name) {
         case 'email':
-          if (!formFieldsValidationMapping[target.name].isValid(target.value)) {
-            feedbackElement.textContent = 'Указанный e-mail является некорректным';
-            formFieldElement.classList.add('form-field--invalid');
+          if (target.value.length !== 0) {
+            if (!formFieldsValidationMapping[target.name].isValid(target.value)) {
+              feedbackElement.textContent = 'Указанный e-mail является некорректным';
+              formFieldElement.classList.add('form-field--invalid');
+            } else {
+              formFieldElement.classList.add('form-field--valid');
+            }
           }
 
           break;
