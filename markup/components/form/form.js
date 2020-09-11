@@ -4,17 +4,17 @@ document.addEventListener(`DOMContentLoaded`, () => {
   const form = document.querySelector('.form');
 
   const formFields = {
-    email: document.querySelector('form [name="email"]'),
-    nickname: document.querySelector('form [name="nickname"]'),
-    password: document.querySelector('form [name="password"]'),
-    passwordConfirmation: document.querySelector('[name="passwordConfirmation"]')
+    email: document.querySelector('.form [name="email"]'),
+    nickname: document.querySelector('.form [name="nickname"]'),
+    password: document.querySelector('.form [name="password"]'),
+    passwordConfirmation: document.querySelector('.form [name="passwordConfirmation"]')
   };
 
-  const submit = form.querySelector('[type="submit"]');
+  const formSubmitButton = form.querySelector('[type="submit"]');
 
-  const close = form.querySelector('.form__button--close');
+  const formCloseButton = form.querySelector('.form__button--close');
 
-  const formFieldsValidationMapping = {
+  const formFieldsValidationsMapping = {
     email: {
       isNotEmpty(value) {
         return value.length !== 0;
@@ -31,7 +31,7 @@ document.addEventListener(`DOMContentLoaded`, () => {
         return value.length >= 3 && value.length <= 40;
       },
       hasValidSymbols(value) {
-        return /\w/.test(value);
+        return /^\w+$/.test(value);
       },
       startsWithALetter(value) {
         if (value) {
@@ -79,16 +79,16 @@ document.addEventListener(`DOMContentLoaded`, () => {
     }
   };
 
-  const isFieldValid = (fieldName, fieldValue) =>
-    formFieldsValidationMapping[fieldName] &&
-    Object.keys(formFieldsValidationMapping[fieldName]).every((key) =>
-      formFieldsValidationMapping[fieldName][key](fieldValue)
+  const isFormFieldValid = (fieldName, fieldValue) =>
+    formFieldsValidationsMapping[fieldName] &&
+    Object.keys(formFieldsValidationsMapping[fieldName]).every((key) =>
+      formFieldsValidationsMapping[fieldName][key](fieldValue)
     );
 
   const getInvalidChecksNames = (fieldName, fieldValue) =>
-    Object.keys(formFieldsValidationMapping[fieldName])
+    Object.keys(formFieldsValidationsMapping[fieldName])
       .map((key) => {
-        const isPassed = formFieldsValidationMapping[fieldName][key](fieldValue);
+        const isPassed = formFieldsValidationsMapping[fieldName][key](fieldValue);
 
         if (!isPassed) {
           return key;
@@ -98,29 +98,41 @@ document.addEventListener(`DOMContentLoaded`, () => {
       })
       .filter((v) => v);
 
-  const sortFieldRequirementsByValidity = (fieldName, fieldValue) => {
-    const fieldRequirements = Object.keys(formFieldsValidationMapping[fieldName]);
+  const sortFormFieldRequirementsByValidity = (fieldName, fieldValue) => {
+    const fieldRequirements = Object.keys(formFieldsValidationsMapping[fieldName]);
 
-    const fieldInvalidRequirements = fieldRequirements.reduce((acc, key) => {
-      const newAcc = formFieldsValidationMapping[fieldName][key](fieldValue) ? acc : [...acc, key];
+    const formFieldInvalidRequirements = fieldRequirements.reduce((acc, key) => {
+      const newAcc = formFieldsValidationsMapping[fieldName][key](fieldValue) ? acc : [...acc, key];
 
       return newAcc;
     }, []);
 
-    const fieldValidRequirements = fieldRequirements.filter(
-      (requirement) => !fieldInvalidRequirements.includes(requirement)
+    const formFieldValidRequirements = fieldRequirements.filter(
+      (requirement) => !formFieldInvalidRequirements.includes(requirement)
     );
 
     return {
-      fieldValidRequirements,
-      fieldInvalidRequirements
+      fieldValidRequirements: formFieldValidRequirements,
+      fieldInvalidRequirements: formFieldInvalidRequirements
     };
   };
 
-  let isChecked = false;
-
-  close.addEventListener('click', ({ target }) => {
+  formCloseButton.addEventListener('click', ({ target }) => {
     const f = target.closest('.form');
+
+    f.querySelectorAll('.form-field').forEach((formField) =>
+      formField.classList.remove('form-field--valid', 'form-field--invalid')
+    );
+
+    f.querySelectorAll('.form-field__validation-rules').forEach((container) =>
+      container.classList.add('form-field__validation-rules--invisible')
+    );
+
+    f.querySelectorAll('.form-field__feedback').forEach((feedback) => {
+      const fb = feedback;
+
+      fb.textContent = '';
+    });
 
     f.classList.add('form--invisible');
 
@@ -141,9 +153,9 @@ document.addEventListener(`DOMContentLoaded`, () => {
       })
       .filter((v) => v);
 
-    const isFormValid = formEntries.every(([key, value]) => isFieldValid(key, value)) && !!isConfirmed;
+    const isFormValid = formEntries.every(([key, value]) => isFormFieldValid(key, value)) && !!isConfirmed;
 
-    submit.disabled = !isFormValid;
+    formSubmitButton.disabled = !isFormValid;
   });
 
   form.addEventListener('submit', (event) => {
@@ -158,7 +170,7 @@ document.addEventListener(`DOMContentLoaded`, () => {
     registrationButton.disabled = true;
     target.classList.add('form--invisible');
 
-    console.log(JSON.stringify(Object.fromEntries(new FormData(event.target))));
+    console.log(JSON.stringify(Object.fromEntries(new FormData(target))));
   });
 
   [formFields.email, formFields.passwordConfirmation].forEach((element) =>
@@ -170,7 +182,7 @@ document.addEventListener(`DOMContentLoaded`, () => {
       switch (target.name) {
         case 'email':
           if (target.value.length !== 0) {
-            if (!formFieldsValidationMapping[target.name].isValid(target.value)) {
+            if (!formFieldsValidationsMapping[target.name].isValid(target.value)) {
               feedbackElement.textContent = 'Указанный e-mail является некорректным';
               formFieldElement.classList.add('form-field--invalid');
             } else {
@@ -226,12 +238,28 @@ document.addEventListener(`DOMContentLoaded`, () => {
     element.addEventListener('blur', ({ target }) => {
       const formFieldElement = target.parentElement;
 
+      const validationRulesContainer = formFieldElement.querySelector('.form-field__validation-rules');
+
+      const validationRulesListItems = validationRulesContainer.querySelectorAll(' .list > .list__item');
+
+      const isCheckedBefore = Array.from(validationRulesListItems).every(
+        (item) => !JSON.parse(item.dataset.isCheckedBefore)
+      );
+
+      const isValid = Array.from(validationRulesListItems).every((item) =>
+        item.classList.contains('list__item--valid')
+      );
+
+      if ((target.value.length === 0 && isCheckedBefore) || (target.value.length !== 0 && isValid)) {
+        validationRulesContainer.classList.add('form-field__validation-rules--invisible');
+      }
+
       const feedbackElement = formFieldElement.querySelector('.form-field__feedback');
 
       switch (target.name) {
         case 'nickname':
-          if (target.value.length !== 0) {
-            if (!isFieldValid(target.name, target.value)) {
+          if (target.value.length !== 0 || (target.value.length === 0 && !isValid)) {
+            if (!isFormFieldValid(target.name, target.value)) {
               formFieldElement.classList.add('form-field--invalid');
 
               if (getInvalidChecksNames(target.name, target.value).includes('startsWithALetter')) {
@@ -245,8 +273,8 @@ document.addEventListener(`DOMContentLoaded`, () => {
           break;
 
         case 'password':
-          if (target.value.length !== 0) {
-            if (!isFieldValid(target.name, target.value)) {
+          if (target.value.length !== 0 || (target.value.length === 0 && !isValid)) {
+            if (!isFormFieldValid(target.name, target.value)) {
               formFieldElement.classList.add('form-field--invalid');
 
               if (getInvalidChecksNames(target.name, target.value).includes('isUnique')) {
@@ -262,12 +290,6 @@ document.addEventListener(`DOMContentLoaded`, () => {
         default:
           throw new Error(`Unknown name: ${target.name}`);
       }
-
-      const validationRulesContainer = formFieldElement.querySelector('.form-field__validation-rules');
-
-      if (!isChecked) {
-        validationRulesContainer.classList.add('form-field__validation-rules--invisible');
-      }
     })
   );
 
@@ -275,51 +297,44 @@ document.addEventListener(`DOMContentLoaded`, () => {
     element.addEventListener('input', ({ target }) => {
       const { name, value } = target;
 
-      const requirementsMapping = sortFieldRequirementsByValidity(name, value);
+      const requirementsMapping = sortFormFieldRequirementsByValidity(name, value);
 
       const validationRulesListItems = target.parentElement.querySelectorAll(' .list > .list__item');
 
-      if (isChecked) {
-        validationRulesListItems.forEach((val) => {
-          const item = val;
-
-          item.classList.remove('list__item--valid', 'list__item--invalid');
-
-          const classList = Array.from(item.classList).map((className) => {
-            const [el, modifier] = className.split('--');
-
-            if (requirementsMapping.fieldValidRequirements.includes(modifier)) {
-              return `${el}--${modifier} ${el}--valid`;
-            }
-
-            if (requirementsMapping.fieldInvalidRequirements.includes(modifier)) {
-              return `${el}--${modifier} ${el}--invalid`;
-            }
-
-            return className;
-          });
-
-          item.className = classList.join(' ');
-        });
-      } else {
-        isChecked = true;
-
-        validationRulesListItems.forEach((val) => {
-          const item = val;
-
-          const classList = Array.from(item.classList).map((className) => {
-            const [el, modifier] = className.split('--');
-
-            if (requirementsMapping.fieldValidRequirements.includes(modifier)) {
-              return `${el}--${modifier} ${el}--valid`;
-            }
-
-            return className;
-          });
-
-          item.className = classList.join(' ');
-        });
+      if (name === 'password') {
+        formFields.passwordConfirmation.value = '';
+        formFields.passwordConfirmation.parentElement.classList.remove(
+          'form-field--valid',
+          'form-field--invalid'
+        );
+        formFields.passwordConfirmation.nextElementSibling.textContent = '';
       }
+
+      validationRulesListItems.forEach((val) => {
+        const item = val;
+
+        const isCheckedBefore = JSON.parse(item.dataset.isCheckedBefore);
+
+        item.classList.remove('list__item--valid', 'list__item--invalid');
+
+        const classList = Array.from(item.classList).map((className) => {
+          const [el, modifier] = className.split('--');
+
+          if (requirementsMapping.fieldValidRequirements.includes(modifier)) {
+            item.dataset.isCheckedBefore = 'true';
+
+            return `${el}--${modifier} ${el}--valid`;
+          }
+
+          if (requirementsMapping.fieldInvalidRequirements.includes(modifier)) {
+            return isCheckedBefore ? `${el}--${modifier} ${el}--invalid` : `${el}--${modifier}`;
+          }
+
+          return className;
+        });
+
+        item.className = classList.join(' ');
+      });
     })
   );
 });
