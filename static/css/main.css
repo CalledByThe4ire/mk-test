@@ -4689,6 +4689,8 @@ body {
   width: 480px;
   height: auto;
   padding: 40px;
+  margin-top: auto;
+  margin-bottom: auto;
   background-color: #fff;
   border: none;
   border-radius: 3px;
@@ -4814,6 +4816,8 @@ body {
   width: 480px;
   height: auto;
   padding: 40px;
+  margin-top: auto;
+  margin-bottom: auto;
   background-color: #fff;
   border: none;
   border-radius: 3px;
@@ -4887,41 +4891,20 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   width: inherit;
   min-width: 320px;
   height: inherit;
   padding: 20px;
   margin: auto;
-  overflow: hidden;
+  overflow: auto;
   font-family: "Roboto", "Arial", sans-serif;
   color: #333;
   background-color: #fff;
 }
 
-.validation-rules-container__title {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: row wrap;
-          flex-flow: row wrap;
-  padding: 0;
-  margin: 0;
-  margin-bottom: 5px;
-  font-size: 12px;
-  font-weight: 700;
-  line-height: 14px;
-  color: #777;
-}
-
-.validation-rules-container__list {
-  padding: 0;
-  margin: 0;
-  list-style: none;
+.page > .button {
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 .validation-rules-list {
@@ -4978,6 +4961,29 @@ body {
   background: url("../img/assets/validation-rules-list/cross.svg") no-repeat;
   -webkit-transform: translate(20%, -50%);
           transform: translate(20%, -50%);
+}
+
+.validation-rules-container__title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: row wrap;
+          flex-flow: row wrap;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 5px;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 14px;
+  color: #777;
+}
+
+.validation-rules-container__list {
+  padding: 0;
+  margin: 0;
+  list-style: none;
 }
 
 /*# sourceMappingURL=main.css.map */
