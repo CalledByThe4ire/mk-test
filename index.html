@@ -39,8 +39,8 @@
             </symbol>
         </svg>
         <input class="button button--registration" value="Регистрация" type="button" />
-        <form class="form form--invisible">
-            <button class="form__button form__button--close" type="button">
+        <form class="form-user-registration form-user-registration--invisible">
+            <button class="form-user-registration__button form-user-registration__button--close" type="button">
                 <svg class="icon icon--close" width="19" height="19">
                     <use xlink:href="#close"></use>
                 </svg>
@@ -48,58 +48,114 @@
             </button>
             <fieldset>
                 <legend>Регистрация</legend>
-                <div class="form__field form-field form-field--email">
+                <div class="form-user-registration__field form-field form-field--email">
                     <label for="email">E-mail</label>
                     <input type="email" name="email" id="email" />
                     <p class="form-field__feedback">
                     </p>
                 </div>
-                <div class="form__field form-field form-field--nickname">
+                <div class="form-user-registration__field form-field form-field--nickname">
                     <label for="nickname">Никнейм</label>
                     <input type="text" name="nickname" id="nickname" placeholder="frontendDeveloper" />
-                    <div class="validation-rules form-field__validation-rules form-field__validation-rules--invisible">
-                        <h2 class="validation-rules__title">Никнейм должен содержать:
+                    <div class="validation-rules-container form-field__validation-rules-container form-field__validation-rules-container--invisible">
+                        <h2 class="validation-rules-container__title">Никнейм должен содержать:
             </h2>
-                        <ul class="list validation-rules__list">
-                            <li class="list__item list__item--hasRequiredSymbolsCount" data-is-checked-before="false">от 3 до 40 символов
+                        <ul class="validation-rules-list validation-rules-container__list">
+                            <li class="validation-rules-list__item validation-rules-list__item--hasRequiredSymbolsCount" data-is-checked-before="false">от 3 до 40 символов
                             </li>
-                            <li class="list__item list__item--hasValidSymbols" data-is-checked-before="false">латинские буквы, или цифры, или символ подчеркивания
+                            <li class="validation-rules-list__item validation-rules-list__item--hasValidSymbols" data-is-checked-before="false">латинские буквы, или цифры, или символ подчеркивания
                             </li>
                         </ul>
                     </div>
                     <p class="form-field__feedback">
                     </p>
                 </div>
-                <div class="form__field form-field form-field--password">
+                <div class="form-user-registration__field form-field form-field--password">
                     <label for="password">Пароль</label>
                     <input type="password" name="password" id="password" />
-                    <div class="validation-rules form-field__validation-rules form-field__validation-rules--invisible">
-                        <h2 class="validation-rules__title">Пароль должен содержать:
+                    <div class="validation-rules-container form-field__validation-rules-container form-field__validation-rules-container--invisible">
+                        <h2 class="validation-rules-container__title">Пароль должен содержать:
             </h2>
-                        <ul class="list validation-rules__list">
-                            <li class="list__item list__item--hasRequiredSymbolsCount" data-is-checked-before="false">от 6 до 32 символов
+                        <ul class="validation-rules-list validation-rules-container__list">
+                            <li class="validation-rules-list__item validation-rules-list__item--hasRequiredSymbolsCount" data-is-checked-before="false">от 6 до 32 символов
                             </li>
-                            <li class="list__item list__item--hasDigit" data-is-checked-before="false">цифру
+                            <li class="validation-rules-list__item validation-rules-list__item--hasDigit" data-is-checked-before="false">цифру
                             </li>
-                            <li class="list__item list__item--hasLowerAndUpperCase" data-is-checked-before="false">заглавную и строчную буквы
+                            <li class="validation-rules-list__item validation-rules-list__item--hasLowerAndUpperCase" data-is-checked-before="false">заглавную и строчную буквы
                             </li>
                         </ul>
                     </div>
                     <p class="form-field__feedback">
                     </p>
                 </div>
-                <div class="form__field form-field form-field--password-confirmation">
+                <div class="form-user-registration__field form-field form-field--password-confirmation">
                     <label for="passwordConfirmation">Пароль ещё раз</label>
                     <input type="password" name="passwordConfirmation" id="passwordConfirmation" />
                     <p class="form-field__feedback">
                     </p>
                 </div>
-                <div class="form__field form-field form-field--user-agreement">
-                    <input type="checkbox" name="userAgreement" id="userAgreement" />
+                <div class="form-user-registration__field form-field form-field--user-agreement">
+                    <input type="checkbox" name="userAgreement" id="userAgreement" value="agree" />
                     <label for="userAgreement">Я принимаю условия <a href='#'>Пользовательского соглашения</a>
                     </label>
                 </div>
-                <input class="button button--submit" value="Зарегистрироваться" disabled="disabled" type="submit" />
+                <input class="button button--submit" value="Далее" disabled="disabled" type="submit" />
+            </fieldset>
+        </form>
+        <form class="form-user-info form-user-info--invisible">
+            <button class="form-user-info__button form-user-info__button--close" type="button">
+                <svg class="icon icon--close" width="19" height="19">
+                    <use xlink:href="#close"></use>
+                </svg>
+
+            </button>
+            <fieldset>
+                <legend>Дополнительная информация</legend>
+                <div class="form-user-info__content-block">
+                    <div class="form-user-info__field form-field form-field--sex">
+                        <p class="form-field__title">Пол
+                        </p>
+                        <input type="radio" name="sex" id="male" value="male" />
+                        <label for="male">М</label>
+                        <input type="radio" name="sex" id="female" value="female" />
+                        <label for="female">Ж</label>
+                    </div>
+                    <div class="form-user-info__field form-field form-field--education">
+                        <p class="form-field__title">Уровень образования
+                        </p>
+                        <select name="education">
+                            <option value="secondary">среднее</option>
+                            <option value="university" selected="selected">высшее</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-user-info__field form-field form-field--about">
+                    <label for="about">О себе</label>
+                    <textarea name="about" id="about" placeholder="Расскажите несколько слов о себе"></textarea>
+                </div>
+                <div class="form-user-info__field form-field form-field--categories">
+                    <p class="form-field__title">Выберите интересующие вас темы
+                    </p>
+                    <input type="checkbox" name="category" id="news" value="news" />
+                    <label for="news">новости</label>
+                    <input type="checkbox" name="category" id="politics" value="politics" checked="checked" />
+                    <label for="politics">политика</label>
+                    <input type="checkbox" name="category" id="economics" value="economics" checked="checked" />
+                    <label for="economics">экономика</label>
+                    <input type="checkbox" name="category" id="accidents" value="accidents" />
+                    <label for="accidents">происшествия</label>
+                    <input type="checkbox" name="category" id="society" value="society" />
+                    <label for="society">общество</label>
+                    <input type="checkbox" name="category" id="sport" value="sport" />
+                    <label for="sport">спорт</label>
+                    <input type="checkbox" name="category" id="culture" value="culture" checked="checked" />
+                    <label for="culture">культура</label>
+                    <input type="checkbox" name="category" id="science" value="science" checked="checked" />
+                    <label for="science">наука</label>
+                    <input type="checkbox" name="category" id="cars" value="cars" />
+                    <label for="cars">авто</label>
+                </div>
+                <input class="button button--submit" value="Зарегистрироваться" type="submit" />
             </fieldset>
         </form>
     </body>
