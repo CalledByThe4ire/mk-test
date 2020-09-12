@@ -4678,6 +4678,12 @@ body {
           box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+@media (max-width: 768.98px) {
+  .form-user-info {
+    width: 100%;
+  }
+}
+
 .form-user-info fieldset {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -4774,6 +4780,12 @@ body {
           box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+@media (max-width: 768.98px) {
+  .form-user-registration {
+    width: 100%;
+  }
+}
+
 .form-user-registration fieldset {
   padding: 0;
   margin: 0;
@@ -4816,12 +4828,6 @@ body {
   margin-left: auto;
 }
 
-.icon {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
 .page {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -4837,12 +4843,20 @@ body {
       -ms-flex-pack: center;
           justify-content: center;
   width: inherit;
+  min-width: 320px;
   height: inherit;
+  padding: 20px;
   margin: auto;
   overflow: hidden;
   font-family: "Roboto", "Arial", sans-serif;
   color: #333;
   background-color: #fff;
+}
+
+.icon {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 
 .validation-rules-container__title {
