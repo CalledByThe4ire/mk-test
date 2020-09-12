@@ -4480,6 +4480,12 @@ body {
   margin-bottom: initial;
 }
 
+@media (max-width: 768.98px) {
+  .form-field--education .form-field__title {
+    margin-bottom: 10px;
+  }
+}
+
 .form-field--education select {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -4505,6 +4511,12 @@ body {
 .form-field--about textarea {
   width: 100%;
   min-height: 126px;
+}
+
+@media (max-width: 768.98px) {
+  .form-field--about textarea {
+    margin-bottom: 25px;
+  }
 }
 
 .form-field--user-agreement, .form-field--categories {
@@ -4592,6 +4604,12 @@ body {
 
 .form-field--categories label {
   width: 25%;
+}
+
+@media (max-width: 768.98px) {
+  .form-field--categories label {
+    width: 100%;
+  }
 }
 
 .form-field--invalid {
@@ -4702,6 +4720,7 @@ body {
   display: table;
   width: 100%;
   padding: 0;
+  padding-right: 25px;
   margin: 0;
   margin-bottom: 35px;
   font-size: 24px;
@@ -4736,12 +4755,34 @@ body {
   margin-bottom: 25px;
 }
 
+@media (max-width: 768.98px) {
+  .form-user-info__content-block {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-flow: row wrap;
+            flex-flow: row wrap;
+  }
+}
+
 .form-user-info__content-block > div:first-child {
   width: 35%;
 }
 
+@media (max-width: 768.98px) {
+  .form-user-info__content-block > div:first-child {
+    width: 100%;
+    margin-bottom: 25px;
+  }
+}
+
 .form-user-info__content-block > div:last-child {
   width: 65%;
+}
+
+@media (max-width: 768.98px) {
+  .form-user-info__content-block > div:last-child {
+    width: 100%;
+  }
 }
 
 .form-user-info .icon {
@@ -4796,6 +4837,7 @@ body {
   display: table;
   width: 100%;
   padding: 0;
+  padding-right: 25px;
   margin: 0;
   margin-bottom: 35px;
   font-size: 24px;
@@ -4828,6 +4870,12 @@ body {
   margin-left: auto;
 }
 
+.icon {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
 .page {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -4851,12 +4899,6 @@ body {
   font-family: "Roboto", "Arial", sans-serif;
   color: #333;
   background-color: #fff;
-}
-
-.icon {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
 }
 
 .validation-rules-container__title {
