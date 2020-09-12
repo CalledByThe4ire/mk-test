@@ -13,7 +13,8 @@
     line-height: 16px;
   }
 
-  input {
+  input,
+  textarea {
     width: inherit;
     padding: 12px 20px;
     margin-bottom: 5px;
@@ -36,7 +37,89 @@
     }
   }
 
-  &--user-agreement {
+  &--sex {
+    display: flex;
+    flex-flow: row wrap;
+    margin-bottom: initial;
+
+    input {
+      display: none;
+    }
+
+    input:checked + label::after {
+      width: 10px;
+      height: 9px;
+      background: url('%=static=%assets/form-user-info/checkmark.svg') no-repeat;
+      transform: translate(20%, -50%);
+    }
+
+    label {
+      position: relative;
+      padding-left: 20px;
+      margin-right: 10px;
+      margin-bottom: initial;
+      font-size: 14px;
+      line-height: 1;
+      color: $info;
+
+      &::before {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        display: block;
+        width: 14px;
+        height: 14px;
+        content: '';
+        border: 1px solid $info;
+        border-radius: 50%;
+        transform: translateY(-50%);
+      }
+
+      &::after {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        display: block;
+        content: '';
+      }
+    }
+  }
+
+  &--education {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    margin-bottom: initial;
+
+    select {
+      display: flex;
+      flex-grow: 1;
+      font-size: 12px;
+      line-height: 14px;
+      color: $info;
+      border: 1px solid $info;
+
+      &:focus,
+      &:active {
+        border: 1px solid $primary;
+        outline: none;
+      }
+    }
+  }
+
+  &--about {
+    label {
+      width: 100%;
+    }
+
+    textarea {
+      width: 100%;
+      min-height: 126px;
+    }
+  }
+
+  &--user-agreement,
+  &--categories {
     margin-top: 20px;
     margin-bottom: 15px;
 
@@ -108,6 +191,19 @@
     }
   }
 
+  &--categories {
+    margin: 0;
+
+    #{$form-field}__title {
+      width: 100%;
+      margin-bottom: 10px;
+    }
+
+    label {
+      width: 25%;
+    }
+  }
+
   &--invalid {
     /* stylelint-disable-next-line no-descending-specificity */
     input {
@@ -120,6 +216,16 @@
     input {
       border-color: $success;
     }
+  }
+
+  &__title {
+    display: flex;
+    padding: 0;
+    margin: 0;
+    margin-right: 10px;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1;
   }
 
   &__validation-rules-container {

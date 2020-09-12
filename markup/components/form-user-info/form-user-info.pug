@@ -1,0 +1,61 @@
+include ../button/button.pug
+include ../icon/icon.pug
+
+mixin form-user-info(data)
+	//- +b('form').form-user-info--invisible&attributes(attributes)
+	+b('form').form-user-info&attributes(attributes)
+		+e('button').button--close(type='button')
+			+icon('close', 19, 19)
+		fieldset
+			legend Дополнительная информация
+
+			+e('div').content-block
+				+e('div').field.form-field__.--sex
+					+e('p').title Пол
+					input(type='radio', name='sex', id='male')
+					label(for='male') М
+
+					input(type='radio', name='sex', id='female')
+					label(for='female') Ж
+
+				+e('div').field.form-field__.--education
+					+e('p').title Уровень образования
+					select(name='education')
+						option(value='secondary') среднее
+						option(value='university') высшее
+
+			+e('div').field.form-field__.--about
+				label(for='about') О себе
+				textarea(name='about' id='about', placeholder='Расскажите несколько слов о себе')
+
+			+e('div').field.form-field__.--categories
+				+e('p').title Выберите интересующие вас темы
+
+				input(type='checkbox', name='category', id='news')
+				label(for='news') новости
+
+				input(type='checkbox', name='category', id='politics')
+				label(for='politics') политика
+
+				input(type='checkbox', name='category', id='economics')
+				label(for='economics') экономика
+
+				input(type='checkbox', name='category', id='accidents')
+				label(for='accidents') происшествия
+
+				input(type='checkbox', name='category', id='society')
+				label(for='society') общество
+
+				input(type='checkbox', name='category', id='sport')
+				label(for='sport') спорт
+
+				input(type='checkbox', name='category', id='culture')
+				label(for='culture') культура
+
+				input(type='checkbox', name='category', id='science')
+				label(for='science') наука
+
+				input(type='checkbox', name='category', id='cars')
+				label(for='cars') авто
+
+			+button('Зарегистрироваться')(type='submit', class='--submit')

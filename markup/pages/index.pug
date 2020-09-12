@@ -2,6 +2,7 @@ extends _template.pug
 include ../components/page/page.pug
 include ../components/button/button.pug
 include ../components/form-user-registration/form-user-registration.pug
+include ../components/form-user-info/form-user-info.pug
 
 block content
 	+page
@@ -10,6 +11,7 @@ block content
 		//- pug mixins go here
 		+button('Регистрация')(type='button', class='--registration')
 		+form-user-registration
+		+form-user-info
 
 //- add scripts if necessary
 //- block prepend scripts

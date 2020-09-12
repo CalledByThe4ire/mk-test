@@ -3,7 +3,8 @@ include ../button/button.pug
 include ../icon/icon.pug
 
 mixin form-user-registration(data)
-	+b('form').form-user-registration--invisible&attributes(attributes)
+	//- +b('form').form-user-registration--invisible&attributes(attributes)
+	+b('form').form-user-registration&attributes(attributes)
 		+e('button').button--close(type='button')
 			+icon('close', 19, 19)
 		fieldset
