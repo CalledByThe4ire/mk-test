@@ -2,8 +2,7 @@ include ../button/button.pug
 include ../icon/icon.pug
 
 mixin form-user-info(data)
-	//- +b('form').form-user-info--invisible&attributes(attributes)
-	+b('form').form-user-info&attributes(attributes)
+	+b('form').form-user-info--invisible&attributes(attributes)
 		+e('button').button--close(type='button')
 			+icon('close', 19, 19)
 		fieldset
@@ -12,17 +11,17 @@ mixin form-user-info(data)
 			+e('div').content-block
 				+e('div').field.form-field__.--sex
 					+e('p').title Пол
-					input(type='radio', name='sex', id='male')
+					input(type='radio', name='sex', id='male', value='male')
 					label(for='male') М
 
-					input(type='radio', name='sex', id='female')
+					input(type='radio', name='sex', id='female', value='female')
 					label(for='female') Ж
 
 				+e('div').field.form-field__.--education
 					+e('p').title Уровень образования
 					select(name='education')
 						option(value='secondary') среднее
-						option(value='university') высшее
+						option(value='university', selected= true) высшее
 
 			+e('div').field.form-field__.--about
 				label(for='about') О себе
@@ -31,31 +30,31 @@ mixin form-user-info(data)
 			+e('div').field.form-field__.--categories
 				+e('p').title Выберите интересующие вас темы
 
-				input(type='checkbox', name='category', id='news')
+				input(type='checkbox', name='categories', id='news' value='news')
 				label(for='news') новости
 
-				input(type='checkbox', name='category', id='politics')
+				input(type='checkbox', name='categories', id='politics', value='politics' checked= true)
 				label(for='politics') политика
 
-				input(type='checkbox', name='category', id='economics')
+				input(type='checkbox', name='categories', id='economics', value='economics' checked= true)
 				label(for='economics') экономика
 
-				input(type='checkbox', name='category', id='accidents')
+				input(type='checkbox', name='categories', id='accidents', value='accidents')
 				label(for='accidents') происшествия
 
-				input(type='checkbox', name='category', id='society')
+				input(type='checkbox', name='categories', id='society', value='society')
 				label(for='society') общество
 
-				input(type='checkbox', name='category', id='sport')
+				input(type='checkbox', name='categories', id='sport', value='sport')
 				label(for='sport') спорт
 
-				input(type='checkbox', name='category', id='culture')
+				input(type='checkbox', name='categories', id='culture', value='culture' checked= true)
 				label(for='culture') культура
 
-				input(type='checkbox', name='category', id='science')
+				input(type='checkbox', name='categories', id='science', value='science' checked= true)
 				label(for='science') наука
 
-				input(type='checkbox', name='category', id='cars')
+				input(type='checkbox', name='categories', id='cars', value='cars')
 				label(for='cars') авто
 
 			+button('Зарегистрироваться')(type='submit', class='--submit')

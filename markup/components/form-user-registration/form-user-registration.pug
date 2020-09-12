@@ -3,8 +3,7 @@ include ../button/button.pug
 include ../icon/icon.pug
 
 mixin form-user-registration(data)
-	//- +b('form').form-user-registration--invisible&attributes(attributes)
-	+b('form').form-user-registration&attributes(attributes)
+	+b('form').form-user-registration--invisible&attributes(attributes)
 		+e('button').button--close(type='button')
 			+icon('close', 19, 19)
 		fieldset
@@ -39,7 +38,7 @@ mixin form-user-registration(data)
 				+e('p').feedback
 
 			+e('div').field.form-field__.--user-agreement
-				input(type='checkbox', name='userAgreement', id='userAgreement')
+				input(type='checkbox', name='userAgreement', id='userAgreement', value='agree')
 				label(for='userAgreement') Я принимаю условия <a href='#'>Пользовательского соглашения</a>
 
 			+button('Далее')(disabled=true, type='submit', class='--submit')

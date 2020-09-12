@@ -1,4 +1,5 @@
-/* eslint-disable no-console */
+/* eslint-disable no-console, import/prefer-default-export, import/no-mutable-exports */
+export let userRegistrationData = {};
 
 document.addEventListener(`DOMContentLoaded`, () => {
   const formUserRegistration = document.querySelector('.form-user-registration');
@@ -15,8 +16,6 @@ document.addEventListener(`DOMContentLoaded`, () => {
   const formUserRegistrationCloseButton = formUserRegistration.querySelector(
     '.form-user-registration__button--close'
   );
-
-  let userRegistrationData = {};
 
   const formUserRegistrationFieldsValidationsMapping = {
     email: {
@@ -170,16 +169,10 @@ document.addEventListener(`DOMContentLoaded`, () => {
 
     const { target } = event;
 
-    const registrationButton = document.querySelector('.button--registration');
-
-    registrationButton.classList.remove('button--invisible');
-    registrationButton.classList.add('button--success');
-    registrationButton.disabled = true;
     target.classList.add('form-user-registration--invisible');
+    document.querySelector('.form-user-info').classList.remove('form-user-info--invisible');
 
     userRegistrationData = { ...userRegistrationData, ...Object.fromEntries(new FormData(target)) };
-
-    console.log(userRegistrationData);
   });
 
   [formUserRegistrationFields.email, formUserRegistrationFields.passwordConfirmation].forEach((element) =>
