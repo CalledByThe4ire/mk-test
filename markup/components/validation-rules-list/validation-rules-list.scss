@@ -1,4 +1,4 @@
-.list {
+.validation-rules-list {
   flex-flow: column wrap;
   margin-top: 5px;
   margin-bottom: 10px;
@@ -36,7 +36,7 @@
       &::after {
         width: 10px;
         height: 9px;
-        background: url('%=static=%assets/list/checkmark.svg') no-repeat;
+        background: url('%=static=%assets/validation-rules-list/checkmark.svg') no-repeat;
         transform: translate(20%, -50%);
       }
     }
@@ -45,7 +45,7 @@
       &::after {
         width: 10px;
         height: 10px;
-        background: url('%=static=%assets/list/cross.svg') no-repeat;
+        background: url('%=static=%assets/validation-rules-list/cross.svg') no-repeat;
         transform: translate(20%, -50%);
       }
     }

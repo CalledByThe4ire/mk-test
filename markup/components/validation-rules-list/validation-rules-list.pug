@@ -1,5 +1,5 @@
-mixin list(data)
-	+b('ul').list&attributes(attributes)
+mixin validation-rules-list(data)
+	+b('ul').validation-rules-list&attributes(attributes)
 		each item in data
 			- const { modifier, text } = item;
 			+e.item(class=`--${modifier}`, data-is-checked-before='false')= text

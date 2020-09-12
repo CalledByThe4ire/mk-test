@@ -2,4 +2,4 @@
 
 // components
 import 'components/page/page';
-import 'components/form/form';
+import 'components/form-user-registration/form-user-registration';

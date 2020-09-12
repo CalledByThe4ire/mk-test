@@ -1,0 +1,7 @@
+include ../validation-rules-list/validation-rules-list.pug
+
+mixin validation-rules-container(data)
+	+b('div').validation-rules-container&attributes(attributes)
+		- const { title, items } = data;
+		+e('h2').title= title
+		+validation-rules-list(items)(class='__list')

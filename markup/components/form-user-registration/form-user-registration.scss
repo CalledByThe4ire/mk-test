@@ -1,6 +1,4 @@
-.form {
-  $form: &;
-
+.form-user-registration {
   position: relative;
   display: flex;
   flex-flow: column wrap;
@@ -29,10 +27,6 @@
   }
 
   &--invisible {
-    display: none;
-  }
-
-  &__list {
     display: none;
   }
 

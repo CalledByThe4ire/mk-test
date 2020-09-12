@@ -1,9 +1,9 @@
-include ../validation-rules/validation-rules.pug
+include ../validation-rules-container/validation-rules-container.pug
 include ../button/button.pug
 include ../icon/icon.pug
 
-mixin form(data)
-	+b('form').form--invisible&attributes(attributes)
+mixin form-user-registration(data)
+	+b('form').form-user-registration--invisible&attributes(attributes)
 		+e('button').button--close(type='button')
 			+icon('close', 19, 19)
 		fieldset
@@ -20,7 +20,7 @@ mixin form(data)
 
 				- const nicknameData = {title: 'Никнейм должен содержать:', items: [{modifier:"hasRequiredSymbolsCount",text:"от 3 до 40 символов"},{modifier:"hasValidSymbols",text:"латинские буквы, или цифры, или символ подчеркивания"}]};
 
-				+validation-rules(nicknameData)(class='__validation-rules--invisible')
+				+validation-rules-container(nicknameData)(class='__validation-rules-container--invisible')
 				+e('p').feedback
 
 			+e('div').field.form-field__.--password
@@ -29,7 +29,7 @@ mixin form(data)
 
 				- const passwordData = {title: 'Пароль должен содержать:', items: [{modifier:"hasRequiredSymbolsCount",text:"от 6 до 32 символов"},{modifier:"hasDigit",text:"цифру"},{modifier:"hasLowerAndUpperCase",text:"заглавную и строчную буквы"}]};
 
-				+validation-rules(passwordData)(class='__validation-rules--invisible')
+				+validation-rules-container(passwordData)(class='__validation-rules-container--invisible')
 				+e('p').feedback
 
 			+e('div').field.form-field__.--password-confirmation
@@ -41,4 +41,4 @@ mixin form(data)
 				input(type='checkbox', name='userAgreement', id='userAgreement')
 				label(for='userAgreement') Я принимаю условия <a href='#'>Пользовательского соглашения</a>
 
-			+button('Зарегистрироваться')(disabled=true, type='submit', class='--submit')
+			+button('Далее')(disabled=true, type='submit', class='--submit')
