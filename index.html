@@ -39,7 +39,7 @@
             </symbol>
         </svg>
         <input class="button button--registration" value="Регистрация" type="button" />
-        <form class="form-user-registration form-user-registration--invisible">
+        <form class="form-user-registration form-user-registration--invisible animate__animated">
             <button class="form-user-registration__button form-user-registration__button--close" type="button">
                 <svg class="icon icon--close" width="19" height="19">
                     <use xlink:href="#close"></use>
@@ -48,13 +48,13 @@
             </button>
             <fieldset>
                 <legend>Регистрация</legend>
-                <div class="form-user-registration__field form-field form-field--email">
+                <div class="form-user-registration__field form-field form-field--email animate__animated">
                     <label for="email">E-mail</label>
                     <input type="email" name="email" id="email" />
                     <p class="form-field__feedback">
                     </p>
                 </div>
-                <div class="form-user-registration__field form-field form-field--nickname">
+                <div class="form-user-registration__field form-field form-field--nickname animate__animated">
                     <label for="nickname">Никнейм</label>
                     <input type="text" name="nickname" id="nickname" placeholder="frontendDeveloper" />
                     <div class="validation-rules-container form-field__validation-rules-container form-field__validation-rules-container--invisible">
@@ -70,7 +70,7 @@
                     <p class="form-field__feedback">
                     </p>
                 </div>
-                <div class="form-user-registration__field form-field form-field--password">
+                <div class="form-user-registration__field form-field form-field--password animate__animated">
                     <label for="password">Пароль</label>
                     <input type="password" name="password" id="password" />
                     <div class="validation-rules-container form-field__validation-rules-container form-field__validation-rules-container--invisible">
@@ -88,7 +88,7 @@
                     <p class="form-field__feedback">
                     </p>
                 </div>
-                <div class="form-user-registration__field form-field form-field--password-confirmation">
+                <div class="form-user-registration__field form-field form-field--password-confirmation animate__animated">
                     <label for="passwordConfirmation">Пароль ещё раз</label>
                     <input type="password" name="passwordConfirmation" id="passwordConfirmation" />
                     <p class="form-field__feedback">
@@ -102,7 +102,7 @@
                 <input class="button button--submit" value="Далее" disabled="disabled" type="submit" />
             </fieldset>
         </form>
-        <form class="form-user-info form-user-info--invisible">
+        <form class="form-user-info form-user-info--invisible animate__animated">
             <button class="form-user-info__button form-user-info__button--close" type="button">
                 <svg class="icon icon--close" width="19" height="19">
                     <use xlink:href="#close"></use>
@@ -115,7 +115,7 @@
                     <div class="form-user-info__field form-field form-field--sex">
                         <p class="form-field__title">Пол
                         </p>
-                        <input type="radio" name="sex" id="male" value="male" />
+                        <input type="radio" name="sex" id="male" value="male" checked="checked" />
                         <label for="male">М</label>
                         <input type="radio" name="sex" id="female" value="female" />
                         <label for="female">Ж</label>
