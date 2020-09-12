@@ -169,8 +169,13 @@ document.addEventListener(`DOMContentLoaded`, () => {
 
     const { target } = event;
 
+    const formUserInfo = document.querySelector('.form-user-info');
+
+    target.classList.remove('animate__fadeIn');
     target.classList.add('form-user-registration--invisible');
-    document.querySelector('.form-user-info').classList.remove('form-user-info--invisible');
+
+    formUserInfo.classList.remove('form-user-info--invisible');
+    formUserInfo.classList.add('animate__fadeIn', 'animate__slow');
 
     userRegistrationData = { ...userRegistrationData, ...Object.fromEntries(new FormData(target)) };
   });
@@ -186,9 +191,10 @@ document.addEventListener(`DOMContentLoaded`, () => {
           if (target.value.length !== 0) {
             if (!formUserRegistrationFieldsValidationsMapping[target.name].isValid(target.value)) {
               feedbackElement.textContent = 'Указанный e-mail является некорректным';
-              formFieldElement.classList.add('form-field--invalid');
+              formFieldElement.classList.add('form-field--invalid', 'animate__shakeX', 'animate__faster');
             } else {
               formFieldElement.classList.add('form-field--valid');
+              formFieldElement.classList.remove('animate__shakeX', 'animate__faster');
             }
           }
 
@@ -197,9 +203,10 @@ document.addEventListener(`DOMContentLoaded`, () => {
         case 'passwordConfirmation':
           if (formUserRegistrationFields.password.value !== target.value) {
             feedbackElement.textContent = 'Введённые пароли не совпадают';
-            formFieldElement.classList.add('form-field--invalid');
+            formFieldElement.classList.add('form-field--invalid', 'animate__shakeX', 'animate__faster');
           } else if (formUserRegistrationFields.password.value.length !== 0 && target.value !== 0) {
             formFieldElement.classList.add('form-field--valid');
+            formFieldElement.classList.remove('animate__shakeX', 'animate__faster');
           }
 
           break;
@@ -268,13 +275,14 @@ document.addEventListener(`DOMContentLoaded`, () => {
         case 'nickname':
           if (target.value.length !== 0 || (target.value.length === 0 && !isValid)) {
             if (!isFormUserRegistrationFieldValid(target.name, target.value)) {
-              formFieldElement.classList.add('form-field--invalid');
+              formFieldElement.classList.add('form-field--invalid', 'animate__shakeX', 'animate__faster');
 
               if (getInvalidChecksNames(target.name, target.value).includes('startsWithALetter')) {
                 feedbackElement.textContent = 'Никнейм может начинаться только с буквы';
               }
             } else {
               formFieldElement.classList.add('form-field--valid');
+              formFieldElement.classList.remove('animate__shakeX', 'animate__faster');
             }
           }
 
@@ -283,13 +291,14 @@ document.addEventListener(`DOMContentLoaded`, () => {
         case 'password':
           if (target.value.length !== 0 || (target.value.length === 0 && !isValid)) {
             if (!isFormUserRegistrationFieldValid(target.name, target.value)) {
-              formFieldElement.classList.add('form-field--invalid');
+              formFieldElement.classList.add('form-field--invalid', 'animate__shakeX', 'animate__faster');
 
               if (getInvalidChecksNames(target.name, target.value).includes('isUnique')) {
                 feedbackElement.textContent = 'Пароль не должен совпадать с Никнеймом';
               }
             } else {
               formFieldElement.classList.add('form-field--valid');
+              formFieldElement.classList.remove('animate__shakeX', 'animate__faster');
             }
           }
 

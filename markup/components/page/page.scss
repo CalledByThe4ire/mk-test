@@ -2,12 +2,17 @@
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
-  justify-content: center;
   width: inherit;
+  min-width: $min-width;
   height: inherit;
+  padding: 20px;
   margin: auto;
-  overflow: hidden;
+  overflow: auto;
   font-family: $font-family-base;
   color: $body-color;
   background-color: $body-bg;
+
+  > .button {
+    @include margin-y(auto);
+  }
 }

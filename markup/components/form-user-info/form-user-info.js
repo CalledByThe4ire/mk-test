@@ -8,9 +8,12 @@ document.addEventListener(`DOMContentLoaded`, () => {
 
   const formUserInfoCloseButton = formUserInfo.querySelector('.form-user-info__button--close');
 
-  formUserInfoCloseButton.addEventListener('click', ({ target }) =>
-    target.closest('.form-user-info').reset()
-  );
+  formUserInfoCloseButton.addEventListener('click', ({ target }) => {
+    target.closest('.form-user-info').reset();
+    target.closest('.form-user-info').classList.add('form-user-info--invisible');
+
+    document.querySelector('.button--registration').classList.remove('button--invisible');
+  });
 
   formUserInfo.addEventListener('submit', (event) => {
     event.preventDefault();

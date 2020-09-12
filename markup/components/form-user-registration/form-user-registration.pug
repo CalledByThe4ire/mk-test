@@ -3,18 +3,18 @@ include ../button/button.pug
 include ../icon/icon.pug
 
 mixin form-user-registration(data)
-	+b('form').form-user-registration--invisible&attributes(attributes)
+	+b('form').form-user-registration--invisible(class='animate__animated')&attributes(attributes)
 		+e('button').button--close(type='button')
 			+icon('close', 19, 19)
 		fieldset
 			legend Регистрация
 
-			+e('div').field.form-field__.--email
+			+e('div').field.form-field__.--email(class='animate__animated')
 				label(for='email') E-mail
 				input(type='email', name='email', id='email')
 				+e('p').feedback
 
-			+e('div').field.form-field__.--nickname
+			+e('div').field.form-field__.--nickname(class='animate__animated')
 				label(for='nickname') Никнейм
 				input(type='text', name='nickname', id='nickname', placeholder='frontendDeveloper')
 
@@ -23,7 +23,7 @@ mixin form-user-registration(data)
 				+validation-rules-container(nicknameData)(class='__validation-rules-container--invisible')
 				+e('p').feedback
 
-			+e('div').field.form-field__.--password
+			+e('div').field.form-field__.--password(class='animate__animated')
 				label(for='password') Пароль
 				input(type='password', name='password', id='password')
 
@@ -32,7 +32,7 @@ mixin form-user-registration(data)
 				+validation-rules-container(passwordData)(class='__validation-rules-container--invisible')
 				+e('p').feedback
 
-			+e('div').field.form-field__.--password-confirmation
+			+e('div').field.form-field__.--password-confirmation(class='animate__animated')
 				label(for='passwordConfirmation') Пароль ещё раз
 				input(type='password', name='passwordConfirmation', id='passwordConfirmation')
 				+e('p').feedback

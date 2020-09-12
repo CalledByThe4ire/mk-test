@@ -2,16 +2,16 @@ include ../button/button.pug
 include ../icon/icon.pug
 
 mixin form-user-info(data)
-	+b('form').form-user-info--invisible&attributes(attributes)
+	+b('form').form-user-info--invisible(class='animate__animated')&attributes(attributes)
 		+e('button').button--close(type='button')
 			+icon('close', 19, 19)
 		fieldset
-			legend Дополнительная информация
+			legend Информация о&nbsp;пользователе
 
 			+e('div').content-block
 				+e('div').field.form-field__.--sex
 					+e('p').title Пол
-					input(type='radio', name='sex', id='male', value='male')
+					input(type='radio', name='sex', id='male', value='male', checked= true)
 					label(for='male') М
 
 					input(type='radio', name='sex', id='female', value='female')
